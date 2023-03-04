@@ -1,0 +1,194 @@
+<style type="text/css">
+h2 {
+    color: #999;
+    margin-top: 0;
+}
+
+.field {
+    margin-bottom: 1em;
+}
+
+.click-to-edit {
+    display: inline-block;
+}
+
+
+/*input {
+    display: initial !important;
+    width: auto !important;
+    margin: 0 5px 0 0 !important;
+}*/
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin2 {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+</style>
+<section class="content-header">
+    <h1>User management</h1>
+</section>
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Add User</h3>
+        </div>
+        <!-- form start -->
+        <form method="post" class="form-horizontal" name="add_user" noValidate>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">First Name*</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-model="user.first_name" name="first_name" placeholder="First Name" ng-minlength="3" maxlength="20" required>
+                    </div>
+                    <div ng-messages="add_user.first_name.$error" ng-if="add_user.$submitted" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please enter first name.</div>
+                        <div class="err-msg" ng-message="minlength">First name is too short.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Last Name*</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-model="user.last_name" name="last_name" placeholder="Last Name" ng-minlength="3" maxlength="20" required>
+                    </div>
+                    <div ng-messages="add_user.last_name.$error" ng-if="add_user.$submitted" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please enter last name.</div>
+                        <div class="err-msg" ng-message="minlength">Last name is too short.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Email*</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" ng-model="user.email" field-available="email" after-leave="true" name="email" placeholder="Email" required>
+                    </div>
+                    <div ng-messages="add_user.email.$error" ng-if="add_user.$submitted" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please enter email address.</div>
+                        <div class="err-msg" ng-message="email">Invalid Email address.</div>
+                        <div class="err-msg" ng-message="available">Email address is already registered.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Paypal ID</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" ng-model="user.paypal_id"  name="paypal_id" placeholder="Paypal ID">
+                    </div>
+                    <div ng-messages="add_user.paypal_id.$error" ng-if="add_user.$submitted" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please enter paypal id.</div>                        
+                        <div class="err-msg" ng-message="email">Invalid paypal ID.</div>                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Phone*</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" ng-model="user.phone" field-available="phone" after-leave="true" name="phone" placeholder="Phone" required ng-minlength="8" ng-maxlength="15">
+                    </div>
+                    <div ng-messages="add_user.phone.$error" ng-if="add_user.$submitted" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please enter phone number.</div>
+                        <div class="err-msg" ng-message="available">Phone number is already registered.</div>
+                        <div class="err-msg" ng-message="minlength">Phone number is too short.</div>
+                        <div class="err-msg" ng-message="maxlength">Phone number is too long.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">City</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-model="user.city" name="city" ng-minlength="3" maxlength="20" placeholder="City">
+                    </div>
+                    <div ng-messages="add_user.city.$error" ng-if="add_user.$submitted" style="color:red" role="alert">                        
+                        <div class="err-msg" ng-message="minlength">City name is too short.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">State</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-model="user.state" name="state" placeholder="State" ng-minlength="3" maxlength="20">
+                    </div>
+                    <div ng-messages="add_user.state.$error" ng-if="add_user.$submitted" style="color:red" role="alert">                        
+                        <div class="err-msg" ng-message="minlength">State name is too short.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Specific code*</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-model="user.specific_code" name="password" placeholder="Specific code" ng-minlength="6" maxlength="16" required>
+                    </div>
+                    <div ng-messages="add_user.password.$error" ng-if="add_user.$submitted" ng-pattern="/^\S/" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please enter specific code.</div>
+                        <div class="err-msg" ng-message="pattern">Invalid specific code.</div>
+                        <div class="err-msg" ng-message="minlength">Specific code must be 6-16 character long.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">API Key</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-model="user.api_key" name="api_key" placeholder="API key">
+                    </div>
+                    <div ng-messages="add_user.api_key.$error" ng-if="add_user.$submitted" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please enter API key.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Site ID</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-model="user.site_id" name="site_id" placeholder="Site ID">
+                    </div>
+                    <div ng-messages="add_user.site_id.$error" ng-if="add_user.$submitted" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please enter site id.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Select Site</label>
+                    <div class="col-sm-6">
+
+                    <select class="form-control" name="site_url" id="site_url" ng-model="user.site_url" placeholder="Select Site">
+                        <!-- <option value="0">Select Site</option> -->
+                        <option value="1">Solaredge</option>
+                        <option value="2">Enphase</option>
+                    </select>
+                        <!-- <input type="text" class="form-control" ng-model="user.site_id" name="site_id" placeholder="Site ID"> -->
+                    </div>
+                    <div ng-messages="add_user.site_url.$error" ng-if="add_user.$submitted" style="color:red" role="alert">
+                        <div class="err-msg" ng-message="required">Please select site.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-5">
+                        <!-- <input type="submit" class="btn btn-info" ng-click="submit(add_user)" name="submit" value="Add" ng-disabled="learningForm.$invalid"> -->
+                        <button type="submit" class="btn btn-info" ng-click="submit(add_user)">
+                            <span ng-show="adding == true"><i class="glyphicon glyphicon-refresh spinning"></i></span> {{ addButtonText }}
+                        </button>
+                        <button type="reset" class="btn btn-default" ng-click="cancel()">Back</button>              
+                        <br>
+                        <br>
+                        <span ng-if="err" style="color:red">{{err}}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+    <!-- /.box -->
+</section>

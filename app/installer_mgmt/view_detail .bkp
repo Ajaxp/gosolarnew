@@ -1,0 +1,111 @@
+<style type="text/css">
+.editable-input {
+    width: 300px;
+}
+</style>
+<section class="content-header">
+    <h1>User Management</h1>
+    <!-- <ol class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">{{modName  | capitalize}}</li>
+                </ol> -->
+</section>
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box">
+        <!--   <div class="col-md-12"> -->
+        <div class="panel panel-info">
+            <div class="panel-heading font-bold">
+                User Detail
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><b>Name:</b></label> {{user.first_name}} {{user.last_name}}
+                    </div>
+                    <div class="form-group">
+                        <label><b>Phone:</b></label> {{user.phone}}
+                    </div>
+                    <div class="form-group">
+                        <label><b>Email:</b></label> {{user.email}}
+                    </div>
+                    <div class="form-group">
+                        <label><b>City:</b></label> {{user.city || 'N/A'}}
+                    </div>
+                    <div class="form-group">
+                        <label><b>State:</b></label> {{user.state || 'N/A'}}
+                    </div>
+                    <div class="form-group">
+                        <label><b>Address:</b></label> {{user.address || 'N/A'}}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><b>Device id:</b></label> {{user.device_id || 'N/A'}}
+                    </div>
+                    <div class="form-group">
+                        <label><b>Money:</b></label> {{user.money || 'N/A'}}
+                    </div>
+                    
+                    <form editable-form name="editableForm" onaftersave="update_user()">
+                        <div class="form-vertical">
+                            <div class="form-group">
+                                <label><b>API key:</b></label>
+                                <!-- <p class="form-control-static"> -->
+                                <span class="form-control-static" e-name="api_key" editable-text="user.api_key">{{ user.api_key}}</span>
+                                <!-- </p> -->
+                            </div>
+                            <div class="form-group">
+                                <label><b>Site ID:</b></label>
+                                <!-- <p class="form-control-static"> -->
+                                <span class="form-control-static" e-name="site_id" editable-text="user.site_id">{{ user.site_id}}</span>
+                                <!-- </p> -->
+                            </div>
+                            <div class="form-group">
+                                <!-- <div> -->
+                                <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                    Edit
+                                </button>
+                                <!-- buttons to submit / cancel form -->
+                                <span ng-show="editableForm.$visible">
+                                            <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                                              Save
+                                            </button>
+                                            <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                              Cancel
+                                            </button>
+                                        </span>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading font-bold">
+            Power Detail
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label><b>Current Power:</b></label> {{data.overview.currentPower.power  || 0}} kWh 
+                </div>
+                <div class="form-group">
+                    <label><b>Today:</b></label> {{data.overview.lastDayData.energy || 0}} kWh
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label><b>This Month:</b></label> {{data.overview.lastMonthData.energy || 0}} kWh
+                </div>
+                <div class="form-group">
+                    <label><b>Life Time:</b></label> {{data.overview.lifeTimeData.energy || 0}} kWh
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.box -->
+</section>

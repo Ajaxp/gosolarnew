@@ -1,0 +1,83 @@
+<style type="text/css">
+h2 {
+    color: #999;
+    margin-top: 0;
+}
+
+.field {
+    margin-bottom: 1em;
+}
+
+.click-to-edit {
+    display: inline-block;
+}
+
+
+/*input {
+    display: initial !important;
+    width: auto !important;
+    margin: 0 5px 0 0 !important;
+}*/
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin2 {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+</style>
+<section class="content-header">
+    <h1>User management</h1>
+</section>
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Add User</h3>
+        </div>
+        <!-- form start -->
+        <form method="post" class="form-horizontal" name="add_amount" noValidate>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Opportunity amount*</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" ng-model="user.amount" name="amount" placeholder="Opportunity amount" required>
+                    </div>
+                    <div ng-messages="add_amount.amount.$error" ng-if="add_amount.$submitted" style="color:red" role="alert">
+                        <div ng-message="required">Opportunity amount is required.</div>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-5">
+                        <!-- <input type="submit" class="btn btn-info" ng-click="submit(add_amount)" name="submit" value="Add" ng-disabled="learningForm.$invalid"> -->
+                        <button type="submit" class="btn btn-info" ng-click="submit(add_amount)">
+                            <span ng-show="adding == true"><i class="glyphicon glyphicon-refresh spinning"></i></span> Mark as Opportunity
+                        </button>
+                        <button type="reset" class="btn btn-default" ng-click="cancel()">Back</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+    <!-- /.box -->
+</section>

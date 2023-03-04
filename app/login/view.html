@@ -1,0 +1,43 @@
+<div class="login-box">
+    <div class="login-logo">
+        <img src="../assets/img/GSP-WEB-LG.png" width="200" alt="Go Solar">
+        <!--<b>Go Solar {{login}}</b>-->
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>        
+        <form name="loginForm" novalidate>
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control" ng-model="usr.email" name="email" placeholder="Email" required>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <div ng-messages="loginForm.email.$error" ng-if="loginForm.$submitted" style="color:red" role="alert">
+                    <div ng-message="required">Please enter email address.</div>
+                    <div ng-message="email">Invalid email address.</div>
+                </div>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" name="password" ng-model="usr.password" placeholder="Password" required>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <div ng-messages="loginForm.password.$error" ng-if="loginForm.$submitted" style="color:red" role="alert">
+                    <div ng-message="required">Please enter password.</div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> Remember Me
+                        </label>
+                    </div>
+                </div> -->
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button name="submit" class="btn btn-primary btn-block btn-flat" ng-click="login(loginForm)">Sign In</button>
+                </div>
+                <!-- /.col -->
+                <span ng-if="error" style="color:red">{{error}}</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.login-box-body -->
+</div>

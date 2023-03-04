@@ -1,0 +1,34 @@
+{
+  "name": "learn2learn",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5",
+    "angular-route": "1.2.16",
+    "jquery": "latest",
+    "bootstrap": "latest",
+    "angular-animate": "1.2.16",
+    "font-awesome": "4.3.0",
+    "angular-bootstrap": "latest",
+    "angular-ui-router": "~0.2.13",
+    "angular-datatables": "^0.5.5",
+    "angular-messages": "1.5.8",
+    "angular-xeditable": "^0.4.0",
+    "angucomplete-alt": "^2.5.0",
+    "angular-sweetalert": "latest"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "bootstrap": "~3.1.1"
+  }
+}

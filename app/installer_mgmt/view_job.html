@@ -1,0 +1,101 @@
+<style type="text/css">
+    .editable-input {
+        width: 300px;
+    }
+</style>
+<section class="content-header">
+    <h1>Job Detail</h1>
+    <!-- <ol class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">{{modName  | capitalize}}</li>
+                </ol> -->
+</section>
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box">
+        <!--   <div class="col-md-12"> -->
+        <div class="panel panel-info">
+            <div class="panel-heading font-bold">
+                Job Detail
+            </div>
+            <div class="panel-body">
+                <form editable-form name="editableForm" onaftersave="update_job()">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>Roof Material:</b></label>
+                                <span class="form-control-static" e-name="roof_material" editable-text="job.roof_material" e-required>{{ job.roof_material}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>Inverter Type:</b></label>
+                                <span class="form-control-static" e-name="inverter_type" editable-text="job.inverter_type" e-required>{{ job.inverter_type}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>Story:</b></label>
+                                <span class="form-control-static" e-name="story" editable-text="job.story" e-required>{{ job.story}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>City:</b></label>
+                                <span class="form-control-static" e-name="city" editable-text="job.city">{{ job.city || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>State:</b></label>
+                                <span class="form-control-static" e-name="state" editable-text="job.state">{{ job.state || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>System Size:</b></label>
+                                <span class="form-control-static" e-name="system_size" editable-text="job.system_size">{{ job.system_size || 'N/A'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>Design:</b></label>
+                                <span class="form-control-static" e-name="design" editable-text="job.design">{{ job.design || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>price:</b></label>
+                                <span class="form-control-static" e-name="price" editable-text="job.price">{{job.price || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                        Edit
+                                    </button>
+                                    <span ng-show="editableForm.$visible">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                                        Save
+                                        </button>
+                                        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                        Cancel
+                                        </button>
+                                    </span>
+                                </div>
+                                <span ng-if="error" style="color:red;">{{error}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+   
+</section>

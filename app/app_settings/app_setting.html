@@ -1,0 +1,41 @@
+<section class="content-header">
+    <h1>App Settings</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">Referral Settings</h3>
+                </div>
+                <div class="box-body">
+                    <label class="control-label">Levels:</label>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary btn-sm" ng-if="range.length =='0' " ng-click="addNewChoice()">+</button>
+                    <div class="row">
+                        <div class="col-md-12" ng-repeat="choice in range">
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" ng-model="choice.network_name" placeholder="Level name">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" ng-model="choice.network_percentage" placeholder="Percentage">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-primary btn-sm" ng-show="$last" ng-click="addNewChoice()">+</button>
+                                <button type="button" class="btn btn-danger btn-sm" ng-show="$last" ng-click="removeChoice()">-</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="col-md-8">
+                        <button class="btn btn-info" ng-click="save()">Save</button>&nbsp;&nbsp;
+                        <span ng-if="error" style="color:red;">{{error}}</span>
+                        <span ng-if="msg" style="color:green;">{{msg}}</span>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col (left) -->
+    </div>
+    <!-- /.row -->
+</section>

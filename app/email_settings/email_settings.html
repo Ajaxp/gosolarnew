@@ -1,0 +1,43 @@
+<style type="text/css">
+    mt-email {
+        margin-bottom: 5px !important;
+    }
+</style>
+<section class="content-header">
+    <h1>Mail Settings</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">Admin Mail Settings</h3>
+                </div>
+                <div class="box-body">                    
+                        <label class="control-label">Emails:</label>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-primary btn-sm" ng-if="range.length =='0' " ng-click="addNewEmail()">+</button>
+                        <div class="row">
+                            <div class="col-md-12 mt-5" ng-repeat="data in range">
+                                <div class="col-md-8">
+                                    <input type="email" class="form-control" ng-model="data.email" placeholder="Email">
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-primary btn-sm" ng-show="$last" ng-click="addNewEmail()">+</button>
+                                    <button type="button" class="btn btn-danger btn-sm" ng-show="$last" ng-click="removeEmail()">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="col-md-8">
+                            <button class="btn btn-info" ng-click="save()">Save</button>&nbsp;&nbsp;
+                            <span ng-if="error" style="color:red;">{{error}}</span>
+                            <span ng-if="msg" style="color:green;">{{msg}}</span>
+                        </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col (left) -->
+    </div>
+    <!-- /.row -->
+</section>

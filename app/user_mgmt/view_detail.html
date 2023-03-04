@@ -1,0 +1,180 @@
+<style type="text/css">
+    .editable-input {
+        width: 300px;
+    }
+</style>
+<section class="content-header">
+    <h1>User Management</h1>
+    <!-- <ol class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">{{modName  | capitalize}}</li>
+                </ol> -->
+</section>
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box">
+        <!--   <div class="col-md-12"> -->
+        <div class="panel panel-info">
+            <div class="panel-heading font-bold">
+                User Detail
+            </div>
+            <div class="panel-body">
+                <form editable-form name="editableForm" onaftersave="update_user()">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>First Name:</b></label>
+                                <span class="form-control-static" e-name="first_name" editable-text="user.first_name" e-required>{{ user.first_name}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>Last Name:</b></label>
+                                <span class="form-control-static" e-name="last_name" editable-text="user.last_name" e-required>{{ user.last_name}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>Phone:</b></label>
+                                <span class="form-control-static" e-name="phone" editable-text="user.phone" e-required>{{ user.phone}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>Email:</b></label>
+                                <span class="form-control-static" e-name="email" editable-text="user.email" e-required>{{ user.email}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>City:</b></label>
+                                <span class="form-control-static" e-name="city" editable-text="user.city">{{ user.city || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>State:</b></label>
+                                <span class="form-control-static" e-name="state" editable-text="user.state">{{ user.state || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>Address:</b></label>
+                                <span class="form-control-static" e-name="address" editable-text="user.address">{{ user.address || 'N/A'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>Device id:</b></label>
+                                <span class="form-control-static" e-name="device_id" editable-text="user.device_id">{{ user.device_id || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>Money:</b></label>
+                                <span class="form-control-static" e-name="money" editable-text="user.money">{{user.money || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>API key:</b></label>
+                                <span class="form-control-static" e-name="api_key" editable-text="user.api_key">{{ user.api_key || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-2"><b>Site ID:</b></label>
+                                <span class="form-control-static" e-name="site_id" editable-text="user.site_id">{{ user.site_id || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>System Size:</b></label>
+                                <span class="form-control-static" e-name="system_size" editable-text="user.system_size">{{ user.system_size || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-3"><b>Estimated Annual Production:</b></label>
+                                <span class="form-control-static" e-name="annual_production" editable-text="user.annual_production">{{ user.annual_production || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                        Edit
+                                    </button>
+                                    <span ng-show="editableForm.$visible">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                                        Save
+                                        </button>
+                                        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                        Cancel
+                                        </button>
+                                    </span>
+                                </div>
+                                <span ng-if="error" style="color:red;">{{error}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading font-bold">
+            Power Detail
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label><b>Current Power:</b></label> {{currentPower | number:2}} kWh
+                </div>
+                <div class="form-group">
+                    <label><b>Today:</b></label> {{lastDayData | number:2}} kWh
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label><b>This Month:</b></label> {{lastMonthData |number:2}} kWh
+                </div>
+                <div class="form-group">
+                    <label><b>Life Time:</b></label> {{lifeTimeData | number:2}} mWh
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="box-header">
+            <!-- <div class="btn-group">
+                <button type="button" class="btn btn-info" ng-click="openAdd()"><i class="fa fa-plus"></i> Add User</button>
+            </div> -->
+             <h3 class="box-title">Referrals</h3> 
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="alert alert-success alert-dismissable" ng-if="msg">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="icon fa fa-check"></i> {{msg}}
+            </div>
+            <div class="alert alert-success alert-dismissable" ng-if="RefMsg">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="icon fa fa-check"></i> {{RefMsg}}
+            </div>
+            <div class="alert alert-danger alert-dismissable" ng-if="err">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="icon fa fa-check"></i> {{err}}
+            </div>
+            <table class="table table-striped table-bordered table-hover row-border hover" dt-options="dtOptions" dt-columns="dtColumns"
+                datatable="" dt-instance="dtInstance">
+                </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>

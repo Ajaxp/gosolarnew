@@ -1,0 +1,93 @@
+<section class="content-header">
+    <h1>Add New Referral</h1>
+</section>
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <!-- <h3 class="box-title">Add as app user</h3> -->
+        </div>
+        <!-- form start -->
+        <form method="post" class="form-horizontal" name="addRef" noValidate>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Referred By*</label>
+                    <div class="col-sm-6">
+                        <angucomplete-alt placeholder="Search By Users Name" pause="400" selected-object="user.referred_by" remote-url="{{url}}admin_api/search_user?name=" remote-url-data-field="results" title-field="name" description-field="email" input-name="referred_by" input-class="form-control" field-required="true" />                    
+                    </div>
+                    <div ng-messages="addRef.referred_by.$error" ng-if="addRef.$submitted" style="color:red" role="alert">
+                    <div ng-message="autocomplete-required">Please enter Referref By.</div>
+                </div>
+                </div>
+            <div class="form-group">
+                <label for="category_name" class="col-sm-3 control-label">First Name*</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="user.first_name" name="first_name" placeholder="First Name" required>
+                </div>
+                <div ng-messages="addRef.first_name.$error" ng-if="addRef.$submitted" style="color:red" role="alert">
+                    <div ng-message="required">Please enter first name.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category_name" class="col-sm-3 control-label">Last Name*</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="user.last_name" name="last_name" placeholder="Last Name" required>
+                </div>
+                <div ng-messages="addRef.last_name.$error" ng-if="addRef.$submitted" style="color:red" role="alert">
+                    <div ng-message="required">Please enter last name.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label for="category_name" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" ng-model="user.email" field-available="email" after-leave="true" name="email" placeholder="Email">
+                    </div>
+                    <div ng-messages="addRef.email.$error" ng-if="addRef.$submitted" style="color:red" role="alert">
+                        <div ng-message="required">Please enter email address.</div>
+                        <div ng-message="available">Email address is already registered.</div>
+                        <div ng-message="email">Invalid Email address.</div>
+                    </div>
+                </div>
+            <div class="form-group">
+                <label for="category_name" class="col-sm-3 control-label">Phone*</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="user.phone" field-available="phone" after-leave="true" name="phone" placeholder="Phone" ng-minlength="8" maxlength="12" required>
+                </div>
+                <div ng-messages="addRef.phone.$error" ng-if="addRef.$submitted" style="color:red" role="alert">
+                    <div ng-message="required">Please enter phone number.</div>
+                    <div ng-message="available">Phone is already registered.</div>
+                    <div ng-message="minlength">Phone is too short.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category_name" class="col-sm-3 control-label">Address</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="user.address" name="address" placeholder="Address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category_name" class="col-sm-3 control-label">City</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="user.city" name="city" placeholder="City">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category_name" class="col-sm-3 control-label">State</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="user.state" name="state" placeholder="State">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-5">
+                    <input type="submit" class="btn btn-info" ng-click="addReferral(addRef)" name="submit" value="Add" >
+                    <br>
+                    <br>
+                    <span ng-if="error" style="color:red">{{error}}</span>
+                </div>
+                
+            </div>
+        </form>
+        <br>
+    </div>
+    <!-- /.box -->
+</section>

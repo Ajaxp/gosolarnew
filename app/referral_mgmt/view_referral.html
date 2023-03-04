@@ -1,0 +1,110 @@
+<style type="text/css">
+.editable-input {
+    width: 250px;
+}
+.custom {
+    float: left;
+}
+</style>
+<section class="content-header">
+    <h1>Referral Management</h1>
+    <!-- <ol class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">{{modName  | capitalize}}</li>
+                </ol> -->
+</section>
+<section class="content">
+    
+    <div class="panel panel-info">
+        <div class="panel-heading font-bold">
+            Referred User Detail
+        </div>
+        <div class="panel-body">
+            <form editable-form name="editableForm" onaftersave="update_user()">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>First Name:</b></label>
+                            <span class="form-control-static" e-name="first_name" editable-text="user.first_name" e-required>{{user.first_name}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>Last Name:</b></label>
+                            <span class="form-control-static" e-name="last_name" editable-text="user.last_name" e-required>{{user.last_name}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>Phone:</b></label>
+                            <span class="form-control-static" e-name="phone" editable-text="user.phone" e-required>{{ user.phone}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>Email:</b></label>
+                            <span class="form-control-static" e-name="email" editable-text="user.email">{{ user.email || 'N/A'}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>Referred By:</b></label> 
+                            <span ng-show="!editableForm.$visible">{{user.referrar || 'N/A'}} </span>
+                            <div class="custom" ng-show="editableForm.$visible">
+                                <angucomplete-alt placeholder="Search By Users Name" pause="400" selected-object="user.referred_by" remote-url="{{url}}search_user?name=" remote-url-data-field="results" title-field="name" description-field="email" input-name="referred_by" input-class="form-control-static editable-input"  />                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>Address:</b></label>
+                            <span class="form-control-static" e-name="address" editable-text="user.address">{{ user.address || 'N/A'}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>City:</b></label>
+                            <span class="form-control-static" e-name="city" editable-text="user.city">{{ user.city || 'N/A'}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>State:</b></label>
+                            <span class="form-control-static" e-name="state" editable-text="user.state">{{ user.state || 'N/A'}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2"><b>Date:</b></label> {{user.created || 'N/A'}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                    Edit
+                                </button>
+                                <span ng-show="editableForm.$visible">
+                                <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                                    Save
+                                </button>
+                                <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                    Cancel
+                                </button>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span ng-if="error" style="color:red;">{{error}}</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- </div> -->
+</section>
